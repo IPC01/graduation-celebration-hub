@@ -288,7 +288,7 @@ function Index() {
         <div className="absolute inset-0">
           <img
             src={confirmBg}
-            alt="Fundo festivo com luzes douradas"
+            alt="Ana Beatriz Ferreira em fotografia de formatura"
             width={1920}
             height={1080}
             loading="lazy"
