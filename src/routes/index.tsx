@@ -40,7 +40,7 @@ function Index() {
             width={1200}
             height={800}
             className="h-full w-full object-cover"
-            priority="true"
+            loading="eager"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/50 to-primary/80" />
         </div>
