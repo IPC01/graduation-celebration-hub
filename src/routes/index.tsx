@@ -5,7 +5,7 @@ import heroImg from "@/assets/hero-graduation.jpg";
 import conviteImg from "@/assets/convite-group.jpg";
 import venueImg from "@/assets/venue.jpg";
 import giftsImg from "@/assets/gifts.jpg";
-import confirmBg from "@/assets/confirm-bg.jpg";
+import confirmBg from "@/assets/graduada-2.jpg";
 import graduada1 from "@/assets/graduada-1.jpg";
 import graduada2 from "@/assets/graduada-2.jpg";
 import graduada3 from "@/assets/graduada-3.jpg";
