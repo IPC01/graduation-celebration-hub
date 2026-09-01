@@ -242,9 +242,62 @@ function Index() {
         </div>
       </section>
 
+      {/* Galeria da Graduada */}
+      <section id="galeria" className="bg-secondary/30 py-24 sm:py-32">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="mb-14 text-center">
+            <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground">
+              Momentos Especiais
+            </p>
+            <h2 className="font-serif text-4xl font-light sm:text-5xl">A Graduada</h2>
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+              Alguns dos momentos mais marcantes desta jornada inesquecível.
+            </p>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-3">
+            {[
+              { src: graduada1, alt: "Ana Beatriz em traje de formatura com diploma" },
+              { src: graduada2, alt: "Ana Beatriz celebrando ao ar livre" },
+              { src: graduada3, alt: "Ana Beatriz com buquê de flores brancas" },
+            ].map((photo, i) => (
+              <div
+                key={i}
+                className="group relative overflow-hidden rounded-2xl shadow-xl transition-all duration-700 hover:-translate-y-2 hover:shadow-2xl"
+              >
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  width={800}
+                  height={1000}
+                  loading="lazy"
+                  className="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                  <Sparkles className="h-10 w-10 text-accent drop-shadow-lg" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Confirmação */}
-      <section className="bg-primary py-24 text-primary-foreground sm:py-32">
-        <div className="mx-auto max-w-3xl px-6 text-center">
+      <section className="relative overflow-hidden py-24 text-primary-foreground sm:py-32">
+        <div className="absolute inset-0">
+          <img
+            src={confirmBg}
+            alt="Fundo festivo com luzes douradas"
+            width={1920}
+            height={1080}
+            loading="lazy"
+            className="h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/70 to-primary/85" />
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
           <Heart className="mx-auto h-10 w-10 text-accent" />
           <h2 className="mt-6 font-serif text-4xl font-light sm:text-5xl">Confirme a sua presença</h2>
           <p className="mt-4 text-lg text-primary-foreground/80">
