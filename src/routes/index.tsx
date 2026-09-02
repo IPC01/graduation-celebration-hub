@@ -276,7 +276,10 @@ function Index() {
     <main className="min-h-screen bg-background text-foreground">
       <Navbar />
       {/* Hero */}
-      <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden">
+      <section
+        id="inicio"
+        className="relative flex min-h-[90vh] items-center justify-center overflow-hidden"
+      >
         <div className="absolute inset-0">
           <img
             src={heroImg}
@@ -316,6 +319,9 @@ function Index() {
           </div>
         </div>
       </section>
+
+      {/* Contagem regressiva */}
+      <Countdown />
 
       {/* Convite */}
       <section id="convite" className="py-24 sm:py-32">
