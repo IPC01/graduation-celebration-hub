@@ -25,6 +25,17 @@ import confirmBg from "@/assets/graduada-2.jpg";
 import graduada1 from "@/assets/graduada-1.jpg";
 import graduada2 from "@/assets/graduada-2.jpg";
 import graduada3 from "@/assets/graduada-3.jpg";
+import mpesaImg from "@/assets/mpesa.png";
+import emolaImg from "@/assets/emola.jpg";
+import bimImg from "@/assets/bim.jpg";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -170,32 +181,21 @@ function Countdown() {
     { label: "Segundos", value: t?.segundos },
   ];
   return (
-    <section id="contagem" className="relative overflow-hidden bg-primary py-20 sm:py-24">
-      <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-accent/15 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-accent/15 blur-3xl" />
-      <div className="relative mx-auto max-w-5xl px-6 text-center text-primary-foreground">
-        <p className="mb-3 text-sm font-medium uppercase tracking-[0.25em] text-accent">
-          Contagem Regressiva
-        </p>
-        <h2 className="font-serif text-4xl font-light sm:text-5xl">A grande noite aproxima-se</h2>
-        <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6">
+    <section id="contagem" className="border-y border-border bg-background py-16 sm:py-20">
+      <div className="mx-auto max-w-4xl px-6 text-center">
+        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary/75">Faltam</p>
+        <div className="mt-8 grid grid-cols-2 gap-x-8 gap-y-9 sm:grid-cols-4 sm:gap-x-12">
           {items.map((item) => (
-            <div
-              key={item.label}
-              className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/10 px-4 py-8 backdrop-blur-sm transition-transform duration-300 hover:-translate-y-1"
-            >
-              <p className="font-serif text-5xl font-light tabular-nums text-accent sm:text-6xl">
+            <div key={item.label}>
+              <p className="font-serif text-5xl font-medium tabular-nums text-foreground sm:text-6xl">
                 {item.value === undefined ? "--" : String(item.value).padStart(2, "0")}
               </p>
-              <p className="mt-3 text-xs font-semibold uppercase tracking-[0.25em] text-primary-foreground/75">
+              <p className="mt-2 text-[10px] font-medium uppercase tracking-[0.25em] text-primary/75">
                 {item.label}
               </p>
             </div>
           ))}
         </div>
-        <p className="mt-10 text-lg text-primary-foreground/80">
-          12 de dezembro de 2026 · Salão Esplendor, Maputo
-        </p>
       </div>
     </section>
   );
@@ -289,7 +289,7 @@ function Index() {
             className="h-full w-full object-cover"
             loading="eager"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/50 to-primary/80" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/20 to-primary/55" />
         </div>
 
         <div className="relative z-10 mx-auto max-w-4xl px-6 text-center text-primary-foreground">
@@ -300,7 +300,7 @@ function Index() {
             Ana Beatriz Ferreira
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg font-light leading-relaxed text-primary-foreground/90 sm:text-xl">
-            É com imensa alegria que convido você a celebrar a conclusura do curso de Direito — uma
+            É com imensa alegria que convido você a celebrar a conclusao do curso de Direito — uma
             conquista construída com dedicação, sonhos e muito esforço.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -349,37 +349,9 @@ function Index() {
                 comemorar. Junte-se a mim, à minha família e aos meus amigos para uma noite
                 inesquecível de celebração.
               </p>
-
-              <div className="mt-10 space-y-5">
-                <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-secondary text-primary">
-                    <Calendar className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground">Data</p>
-                    <p className="text-muted-foreground">Sábado, 12 de dezembro de 2026</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-secondary text-primary">
-                    <Clock className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground">Horário</p>
-                    <p className="text-muted-foreground">19h30 — Cerimónia de recepção</p>
-                    <p className="text-muted-foreground">20h30 — Início da festa</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-secondary text-primary">
-                    <MapPin className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground">Local</p>
-                    <p className="text-muted-foreground">Salão Esplendor, Maputo</p>
-                  </div>
-                </div>
-              </div>
+              <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+                Convido você a partilhar comigo este momento tão especial e celebrar esta conquista.
+              </p>
             </div>
           </div>
         </div>
@@ -389,59 +361,40 @@ function Index() {
       <Programa />
 
       {/* Local */}
-      <section id="local" className="bg-secondary/50 py-24 sm:py-32">
+      <section id="local" className="bg-background py-24 sm:py-32">
         <div className="mx-auto max-w-6xl px-6">
-          <div className="text-center">
-            <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              O Local
-            </p>
-            <h2 className="font-serif text-4xl font-light sm:text-5xl">Salão Esplendor</h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-              Um espaço sofisticado e acolhedor, preparado especialmente para uma noite de
-              celebração e memórias inesquecíveis.
-            </p>
-          </div>
-
-          <div className="mt-14 overflow-hidden rounded-2xl shadow-2xl">
-            <iframe
-              title="Mapa do Salão Esplendor, Avenida Julius Nyerere, Maputo"
-              src="https://www.openstreetmap.org/export/embed.html?bbox=32.5450%2C-25.9950%2C32.6150%2C-25.9350&layer=mapnik&marker=-25.9653%2C32.5832"
-              className="h-[420px] w-full border-0"
-              loading="lazy"
-            />
-          </div>
-          <div className="mt-6 text-center">
-            <a
-              href="https://www.openstreetmap.org/?mlat=-25.9653&mlon=32.5832#map=15/-25.9653/32.5832"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-semibold text-foreground shadow-sm transition-all hover:bg-secondary"
-            >
-              <MapPin className="h-4 w-4 text-accent" />
-              Abrir no mapa
-            </a>
-          </div>
-
-          <div className="mt-12 grid gap-8 sm:grid-cols-3">
-            <div className="rounded-xl bg-card p-6 text-center shadow-sm">
-              <p className="font-semibold text-foreground">Endereço</p>
-              <p className="mt-2 text-muted-foreground">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.25em] text-primary/75">
+                Como Chegar
+              </p>
+              <h2 className="mt-8 font-serif text-4xl font-light leading-tight sm:text-5xl">
+                Local da cerimónia
+              </h2>
+              <address className="mt-12 not-italic text-base leading-relaxed text-muted-foreground">
+                Salão Esplendor
+                <br />
                 Avenida Julius Nyerere, 1245
                 <br />
                 Maputo, Moçambique
-              </p>
+              </address>
+              <a
+                href="https://www.openstreetmap.org/?mlat=-25.9653&mlon=32.5832#map=15/-25.9653/32.5832"
+                target="_blank"
+                rel="noreferrer"
+                className="mt-9 inline-flex items-center gap-2 border border-foreground px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.18em] text-foreground transition-colors hover:bg-foreground hover:text-background"
+              >
+                <MapPin className="h-4 w-4" />
+                Ver no mapa
+              </a>
             </div>
-            <div className="rounded-xl bg-card p-6 text-center shadow-sm">
-              <p className="font-semibold text-foreground">Estacionamento</p>
-              <p className="mt-2 text-muted-foreground">
-                Estacionamento privativo com segurança disponível para todos os convidados.
-              </p>
-            </div>
-            <div className="rounded-xl bg-card p-6 text-center shadow-sm">
-              <p className="font-semibold text-foreground">Dress code</p>
-              <p className="mt-2 text-muted-foreground">
-                Traje de gala. Sugestão de cores: azul marinho, dourado e champagne.
-              </p>
+            <div className="overflow-hidden border border-border">
+              <iframe
+                title="Mapa do Salão Esplendor, Avenida Julius Nyerere, Maputo"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=32.5450%2C-25.9950%2C32.6150%2C-25.9350&layer=mapnik&marker=-25.9653%2C32.5832"
+                className="h-[340px] w-full border-0 sm:h-[400px]"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
@@ -478,12 +431,50 @@ function Index() {
                 ))}
               </ul>
 
-              <div className="mt-10 rounded-xl border border-dashed border-border bg-muted/50 p-6">
-                <p className="text-sm font-medium text-muted-foreground">
-                  <Gift className="mb-1 mr-2 inline h-4 w-4 text-accent" />
-                  Conta para depósito disponível na confirmação de presença.
-                </p>
-              </div>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <button
+                    type="button"
+                    className="mt-10 inline-flex items-center gap-3 border border-border bg-muted/50 px-5 py-4 text-left text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+                  >
+                    <Gift className="h-5 w-5 shrink-0 text-accent" />
+                    Ver contas para contribuição
+                  </button>
+                </DialogTrigger>
+                <DialogContent className="max-w-xl p-7 sm:rounded-none">
+                  <DialogHeader className="text-left">
+                    <DialogTitle className="font-serif text-3xl font-normal">Contas para contribuição</DialogTitle>
+                    <DialogDescription className="mt-2 text-base leading-relaxed">
+                      A sua presença é o melhor presente. Para quem desejar contribuir, seguem as
+                      opções disponíveis.
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="mt-3 grid gap-3">
+                    {[
+                      { name: "M-Pesa", number: "84 000 0000", image: mpesaImg },
+                      { name: "e-Mola", number: "86 000 0000", image: emolaImg },
+                      { name: "Banco BIM", number: "0000 0000 0000 0000", image: bimImg },
+                    ].map((account) => (
+                      <div
+                        key={account.name}
+                        className="flex items-center gap-4 border border-border px-4 py-3"
+                      >
+                        <img
+                          src={account.image}
+                          alt={`Logótipo ${account.name}`}
+                          className="h-11 w-16 object-contain"
+                        />
+                        <div>
+                          <p className="text-sm font-semibold text-foreground">{account.name}</p>
+                          <p className="mt-1 font-serif text-xl tabular-nums text-foreground">
+                            {account.number}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </DialogContent>
+              </Dialog>
             </div>
 
             <div>
@@ -585,25 +576,13 @@ function Index() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border bg-background py-12">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
-            <div className="text-center md:text-left">
-              <p className="font-serif text-xl font-light text-foreground">Ana Beatriz Ferreira</p>
-              <p className="mt-1 text-sm text-muted-foreground">Formanda em Direito · 2026</p>
-            </div>
-            <div className="text-center md:text-right">
-              <p className="text-sm text-muted-foreground">
-                Com carinho, Ana Beatriz e família.
-              </p>
-              <p className="mt-1 text-sm text-muted-foreground">
-                contacto@anabeatrizferreira.co.mz
-              </p>
-            </div>
-          </div>
-          <div className="mt-8 text-center text-xs text-muted-foreground">
-            © 2026 Festa de Formatura Ana Beatriz Ferreira. Todos os direitos reservados.
-          </div>
+      <footer className="border-t border-border bg-background py-16 sm:py-20">
+        <div className="mx-auto max-w-2xl px-6 text-center">
+          <GraduationCap className="mx-auto h-6 w-6 stroke-[1.25] text-foreground" />
+          <p className="mt-10 text-sm tracking-wide text-muted-foreground">
+            Com gratidão, obrigada por fazerem parte desta conquista.
+          </p>
+          <p className="mt-4 font-serif text-lg text-foreground">Ivânia Perce Chirindza</p>
         </div>
       </footer>
     </main>
