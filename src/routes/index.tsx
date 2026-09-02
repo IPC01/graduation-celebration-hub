@@ -61,12 +61,15 @@ function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled || open
-          ? "bg-primary/95 shadow-lg backdrop-blur-md"
+          ? "bg-background/95 shadow-lg backdrop-blur-md"
           : "bg-gradient-to-b from-primary/70 to-transparent"
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        <a href="#inicio" className="font-serif text-xl text-primary-foreground">
+        <a
+          href="#inicio"
+          className={`font-serif text-xl ${scrolled || open ? "text-foreground" : "text-primary-foreground"}`}
+        >
           Ana Beatriz
         </a>
         <ul className="hidden items-center gap-7 lg:flex">
@@ -74,7 +77,11 @@ function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground/85 transition-colors hover:text-accent"
+                className={`text-xs font-semibold uppercase tracking-[0.18em] transition-colors ${
+                  scrolled || open
+                    ? "text-foreground/80 hover:text-primary"
+                    : "text-primary-foreground/85 hover:text-accent"
+                }`}
               >
                 {link.label}
               </a>
@@ -94,20 +101,24 @@ function Navbar() {
           aria-label={open ? "Fechar menu" : "Abrir menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full text-primary-foreground transition-colors hover:bg-primary-foreground/10 lg:hidden"
+          className={`inline-flex h-10 w-10 items-center justify-center rounded-full transition-colors lg:hidden ${
+            scrolled || open
+              ? "text-foreground hover:bg-secondary"
+              : "text-primary-foreground hover:bg-primary-foreground/10"
+          }`}
         >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </nav>
       {open && (
-        <div className="border-t border-primary-foreground/10 bg-primary/95 px-6 py-4 backdrop-blur-md lg:hidden">
+        <div className="border-t border-border bg-background px-6 py-4 lg:hidden">
           <ul className="space-y-1">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="block rounded-lg px-4 py-3 text-sm font-semibold uppercase tracking-wider text-primary-foreground/90 transition-colors hover:bg-primary-foreground/10 hover:text-accent"
+                  className="block rounded-lg px-4 py-3 text-sm font-semibold uppercase tracking-wider text-foreground/90 transition-colors hover:bg-secondary hover:text-primary"
                 >
                   {link.label}
                 </a>
