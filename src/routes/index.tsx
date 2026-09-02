@@ -385,6 +385,9 @@ function Index() {
         </div>
       </section>
 
+      {/* Programa */}
+      <Programa />
+
       {/* Local */}
       <section id="local" className="bg-secondary/50 py-24 sm:py-32">
         <div className="mx-auto max-w-6xl px-6">
@@ -400,14 +403,23 @@ function Index() {
           </div>
 
           <div className="mt-14 overflow-hidden rounded-2xl shadow-2xl">
-            <img
-              src={venueImg}
-              alt="Salão de festas decorado para a formatura"
-              width={1200}
-              height={704}
+            <iframe
+              title="Mapa do Salão Esplendor, Avenida Julius Nyerere, Maputo"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=32.5450%2C-25.9950%2C32.6150%2C-25.9350&layer=mapnik&marker=-25.9653%2C32.5832"
+              className="h-[420px] w-full border-0"
               loading="lazy"
-              className="h-auto w-full object-cover"
             />
+          </div>
+          <div className="mt-6 text-center">
+            <a
+              href="https://www.openstreetmap.org/?mlat=-25.9653&mlon=32.5832#map=15/-25.9653/32.5832"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-semibold text-foreground shadow-sm transition-all hover:bg-secondary"
+            >
+              <MapPin className="h-4 w-4 text-accent" />
+              Abrir no mapa
+            </a>
           </div>
 
           <div className="mt-12 grid gap-8 sm:grid-cols-3">
@@ -530,7 +542,10 @@ function Index() {
       </section>
 
       {/* Confirmação */}
-      <section className="relative overflow-hidden py-24 text-primary-foreground sm:py-32">
+      <section
+        id="confirmar"
+        className="relative overflow-hidden py-24 text-primary-foreground sm:py-32"
+      >
         <div className="absolute inset-0">
           <img
             src={confirmBg}
