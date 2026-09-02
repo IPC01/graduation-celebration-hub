@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
   Calendar,
@@ -36,28 +35,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Festa de Formatura — Ana Beatriz Ferreira" },
-      {
-        name: "description",
-        content:
-          "Você está convidado para a festa de formatura de Ana Beatriz Ferreira. Celebre essa conquista especial conosco.",
-      },
-      { property: "og:title", content: "Festa de Formatura — Ana Beatriz Ferreira" },
-      {
-        property: "og:description",
-        content:
-          "Você está convidado para a festa de formatura de Ana Beatriz Ferreira. Celebre essa conquista especial conosco.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
-  component: Index,
-});
 
 const NAV_LINKS = [
   { href: "#inicio", label: "Início" },
@@ -271,7 +248,7 @@ function Programa() {
   );
 }
 
-function Index() {
+export default function App() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <Navbar />
