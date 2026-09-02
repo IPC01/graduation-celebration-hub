@@ -271,15 +271,15 @@ export default function App() {
 
         <div className="relative z-10 mx-auto max-w-4xl px-6 text-center text-primary-foreground">
           <p className="mb-4 text-sm font-medium uppercase tracking-[0.25em] text-accent">
-            Festa de Formatura
+            Festa de Graduação
           </p>
           <h1 className="font-serif text-5xl font-light leading-tight sm:text-6xl md:text-7xl">
             Ana Beatriz Ferreira
           </h1>
-          <p className="mx-auto mt-6 max-w-xl text-lg font-light leading-relaxed text-primary-foreground/90 sm:text-xl">
+          {/* <p className="mx-auto mt-6 max-w-xl text-lg font-light leading-relaxed text-primary-foreground/90 sm:text-xl">
             É com imensa alegria que convido você a celebrar a conclusao do curso de Direito — uma
             conquista construída com dedicação, sonhos e muito esforço.
-          </p>
+          </p> */}
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
               href="#convite"
