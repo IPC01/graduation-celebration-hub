@@ -70,7 +70,7 @@ function Navbar() {
           href="#inicio"
           className={`font-serif text-xl ${scrolled || open ? "text-foreground" : "text-primary-foreground"}`}
         >
-          Ana Beatriz
+          Ivânia Perce Chirindza
         </a>
         <ul className="hidden items-center gap-7 lg:flex">
           {NAV_LINKS.map((link) => (
@@ -189,37 +189,9 @@ function Countdown() {
   );
 }
 
-const PROGRAMA = [
-  {
-    hora: "19h30",
-    titulo: "Recepção & Welcome Drink",
-    descricao: "Boas-vindas aos convidados com espumante e música ambiente.",
-    icon: GlassWater,
-  },
-  {
-    hora: "20h30",
-    titulo: "Cerimónia de Celebração",
-    descricao: "Discursos da graduada, família e mentores, com brinde oficial.",
-    icon: GraduationCap,
-  },
-  {
-    hora: "21h30",
-    titulo: "Jantar de Gala",
-    descricao: "Jantar servido com menu especial preparado para a ocasião.",
-    icon: UtensilsCrossed,
-  },
-  {
-    hora: "23h00",
-    titulo: "Abertura da Pista",
-    descricao: "Primeira dança e abertura oficial da pista de dança.",
-    icon: Music,
-  },
-  {
-    hora: "00h00",
-    titulo: "Festa até de madrugada",
-    descricao: "DJ, pista aberta e muita celebração até altas horas.",
-    icon: PartyPopper,
-  },
+const PROGRAMA = [ { hora: "Entrada da Graduada", titulo: "A Grande Chegada", descricao: "Recebemos a graduada com alegria e emoção, dando início a uma noite memorável.", icon: GlassWater, }, { hora: "Mensagens e Felicitações", titulo: "Palavras que Marcam", descricao: "Um momento especial dedicado a mensagens, homenagens e felicitações de familiares e amigos.", icon: GraduationCap, }, { hora: "Momento de Celebração", titulo: "Brinde à Conquista", descricao: "Levantamos os nossos copos para celebrar esta grande conquista e todos os sonhos que estão por vir.", icon: GlassWater, }, { hora: "Entrega de Presentes", titulo: "Carinho em Cada Presente", descricao: "Um momento de carinho e surpresa, marcado pela entrega de presentes e lembranças especiais.", icon: PartyPopper, }, { hora: "Dança e Celebração", titulo: "Vamos Celebrar!", descricao: "Música, dança, alegria e muita diversão para encerrar esta noite inesquecível em grande estilo.", icon: Music,
+
+ }, 
 ];
 
 function Programa() {
@@ -271,7 +243,7 @@ export default function App() {
         <div className="absolute inset-0">
           <img
             src={heroImg}
-            alt="Ana Beatriz Ferreira em traje de formatura"
+            alt="Ivânia Perce Chirindza em traje de formatura"
             width={1200}
             height={800}
             className="h-full w-full object-cover"
@@ -285,7 +257,7 @@ export default function App() {
             Festa de Graduação
           </p>
           <h1 className="font-serif text-5xl font-light leading-tight sm:text-6xl md:text-7xl">
-            Ana Beatriz Ferreira
+            Ivânia Perce Chirindza
           </h1>
           {/* <p className="mx-auto mt-6 max-w-xl text-lg font-light leading-relaxed text-primary-foreground/90 sm:text-xl">
             É com imensa alegria que convido você a celebrar a conclusao do curso de Direito — uma
@@ -312,38 +284,58 @@ export default function App() {
       <Countdown />
 
       {/* Convite */}
-      <section id="convite" className="py-24 sm:py-32">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-            <div className="order-2 lg:order-1">
-              <img
-                src={conviteImg}
-                alt="Grupo de formandos celebrando"
-                width={1200}
-                height={704}
-                loading="lazy"
-                className="rounded-2xl shadow-2xl"
-              />
-            </div>
-            <div className="order-1 lg:order-2">
-              <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground">
-                O Convite
-              </p>
-              <h2 className="font-serif text-4xl font-light leading-tight sm:text-5xl">
-                Uma noite para celebrar
-              </h2>
-              <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-                Depois de anos de estudos, noites em claro e desafios superados, chegou o momento de
-                comemorar. Junte-se a mim, à minha família e aos meus amigos para uma noite
-                inesquecível de celebração.
-              </p>
-              <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
-                Convido você a partilhar comigo este momento tão especial e celebrar esta conquista.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      ```tsx
+<section id="convite" className="py-24 sm:py-32">
+  <div className="mx-auto max-w-6xl px-6">
+    <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+
+      <div className="order-2 lg:order-1">
+        <img
+          src={conviteImg}
+          alt="Celebração da formatura"
+          width={1200}
+          height={704}
+          loading="lazy"
+          className="rounded-2xl shadow-2xl"
+        />
+      </div>
+
+      <div className="order-1 lg:order-2">
+        <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground">
+          Uma conquista
+        </p>
+
+        <h2 className="font-serif text-4xl font-light leading-tight sm:text-5xl">
+          Um sonho que se tornou realidade
+        </h2>
+
+        <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+          Depois de anos de dedicação, noites de estudo, desafios e muitos
+          momentos de aprendizagem, chegou o momento de celebrar uma das
+          maiores conquistas da minha vida.
+        </p>
+
+        <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+          Com muito orgulho, celebro a conclusão da minha
+          <strong> Licenciatura em Informática pela Universidade Eduardo Mondlane (UEM)</strong>.
+          Esta caminhada foi feita de esforço, determinação e perseverança,
+          e cada etapa contribuiu para a profissional e pessoa que me tornei.
+        </p>
+
+        <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+          Quero partilhar esta conquista com a minha família, amigos, colegas,
+         e com todas as pessoas que fizeram parte desta jornada.
+          A presença de cada um tornará este momento ainda mais especial.
+        </p>
+
+        <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+          <strong>Venha celebrar comigo este novo capítulo!</strong>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
 
       {/* Programa */}
       <Programa />
@@ -431,7 +423,7 @@ export default function App() {
                 </DialogTrigger>
                 <DialogContent className="max-w-xl p-7 sm:rounded-none">
                   <DialogHeader className="text-left">
-                    <DialogTitle className="font-serif text-3xl font-normal">Contas para contribuição</DialogTitle>
+                    <DialogTitle className="font-serif text-3xl font-normal">Contas para contribuição<strong>Ivânia Perce Chirindza</strong></DialogTitle>
                     <DialogDescription className="mt-2 text-base leading-relaxed">
                       A sua presença é o melhor presente. Para quem desejar contribuir, seguem as
                       opções disponíveis.
@@ -439,9 +431,9 @@ export default function App() {
                   </DialogHeader>
                   <div className="mt-3 grid gap-3">
                     {[
-                      { name: "M-Pesa", number: "84 000 0000", image: mpesaImg },
-                      { name: "e-Mola", number: "86 000 0000", image: emolaImg },
-                      { name: "Banco BIM", number: "0000 0000 0000 0000", image: bimImg },
+                      { name: "M-Pesa", number: "842 01 9475", image: mpesaImg },
+                      { name: "e-Mola", number: "868 032 230", image: emolaImg },
+                      { name: "Banco BIM", number: "0001 0000 0072 4806 7965 7 ", image: bimImg },
                     ].map((account) => (
                       <div
                         key={account.name}
@@ -546,7 +538,7 @@ export default function App() {
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
-              href="https://wa.me/258000000000?text=Olá! Confirmo a minha presença na festa de formatura da Ana Beatriz."
+              href="https://wa.me/258000000000?text=Olá! Confirmo a minha presença na festa de formatura da Ivânia Perce Chirindza."
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center justify-center rounded-full bg-accent px-8 py-3.5 text-sm font-semibold uppercase tracking-wider text-accent-foreground transition-all hover:bg-accent/90"
