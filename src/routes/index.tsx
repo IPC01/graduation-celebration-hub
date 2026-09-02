@@ -284,7 +284,7 @@ export default function App() {
       <Countdown />
 
       {/* Convite */}
-      ```tsx
+      
 <section id="convite" className="py-24 sm:py-32">
   <div className="mx-auto max-w-6xl px-6">
     <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
@@ -486,9 +486,9 @@ export default function App() {
 
           <div className="grid gap-6 sm:grid-cols-3">
             {[
-              { src: graduada1, alt: "Ana Beatriz em traje de formatura com diploma" },
-              { src: graduada2, alt: "Ana Beatriz celebrando ao ar livre" },
-              { src: graduada3, alt: "Ana Beatriz com buquê de flores brancas" },
+              { src: graduada1, alt: "" },
+              { src: graduada2, alt: "" },
+              { src: graduada3, alt: "" },
             ].map((photo, i) => (
               <div
                 key={i}
@@ -520,7 +520,7 @@ export default function App() {
         <div className="absolute inset-0">
           <img
             src={confirmBg}
-            alt="Ana Beatriz Ferreira em fotografia de formatura"
+            alt=""
             width={1920}
             height={1080}
             loading="lazy"
