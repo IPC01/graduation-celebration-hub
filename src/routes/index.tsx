@@ -48,9 +48,233 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+const NAV_LINKS = [
+  { href: "#inicio", label: "Início" },
+  { href: "#contagem", label: "Contagem" },
+  { href: "#convite", label: "Convite" },
+  { href: "#programa", label: "Programa" },
+  { href: "#local", label: "Local" },
+  { href: "#presentes", label: "Presentes" },
+  { href: "#galeria", label: "Galeria" },
+];
+
+function Navbar() {
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        scrolled || open
+          ? "bg-primary/95 shadow-lg backdrop-blur-md"
+          : "bg-gradient-to-b from-primary/70 to-transparent"
+      }`}
+    >
+      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
+        <a href="#inicio" className="font-serif text-xl text-primary-foreground">
+          Ana Beatriz
+        </a>
+        <ul className="hidden items-center gap-7 lg:flex">
+          {NAV_LINKS.map((link) => (
+            <li key={link.href}>
+              <a
+                href={link.href}
+                className="text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground/85 transition-colors hover:text-accent"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+          <li>
+            <a
+              href="#confirmar"
+              className="rounded-full bg-accent px-5 py-2 text-xs font-bold uppercase tracking-wider text-accent-foreground transition-colors hover:bg-accent/90"
+            >
+              Confirmar
+            </a>
+          </li>
+        </ul>
+        <button
+          type="button"
+          aria-label={open ? "Fechar menu" : "Abrir menu"}
+          aria-expanded={open}
+          onClick={() => setOpen((v) => !v)}
+          className="inline-flex h-10 w-10 items-center justify-center rounded-full text-primary-foreground transition-colors hover:bg-primary-foreground/10 lg:hidden"
+        >
+          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        </button>
+      </nav>
+      {open && (
+        <div className="border-t border-primary-foreground/10 bg-primary/95 px-6 py-4 backdrop-blur-md lg:hidden">
+          <ul className="space-y-1">
+            {NAV_LINKS.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="block rounded-lg px-4 py-3 text-sm font-semibold uppercase tracking-wider text-primary-foreground/90 transition-colors hover:bg-primary-foreground/10 hover:text-accent"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+            <li>
+              <a
+                href="#confirmar"
+                onClick={() => setOpen(false)}
+                className="mt-2 block rounded-full bg-accent px-4 py-3 text-center text-sm font-bold uppercase tracking-wider text-accent-foreground"
+              >
+                Confirmar presença
+              </a>
+            </li>
+          </ul>
+        </div>
+      )}
+    </header>
+  );
+}
+
+const EVENT_DATE = new Date("2026-12-12T19:30:00+02:00").getTime();
+
+function useCountdown() {
+  const [now, setNow] = useState<number | null>(null);
+  useEffect(() => {
+    const tick = () => setNow(Date.now());
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
+  const diff = now === null ? null : Math.max(0, EVENT_DATE - now);
+  if (diff === null) return null;
+  return {
+    dias: Math.floor(diff / 86_400_000),
+    horas: Math.floor((diff / 3_600_000) % 24),
+    minutos: Math.floor((diff / 60_000) % 60),
+    segundos: Math.floor((diff / 1000) % 60),
+  };
+}
+
+function Countdown() {
+  const t = useCountdown();
+  const items = [
+    { label: "Dias", value: t?.dias },
+    { label: "Horas", value: t?.horas },
+    { label: "Minutos", value: t?.minutos },
+    { label: "Segundos", value: t?.segundos },
+  ];
+  return (
+    <section id="contagem" className="relative overflow-hidden bg-primary py-20 sm:py-24">
+      <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-accent/15 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-accent/15 blur-3xl" />
+      <div className="relative mx-auto max-w-5xl px-6 text-center text-primary-foreground">
+        <p className="mb-3 text-sm font-medium uppercase tracking-[0.25em] text-accent">
+          Contagem Regressiva
+        </p>
+        <h2 className="font-serif text-4xl font-light sm:text-5xl">A grande noite aproxima-se</h2>
+        <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6">
+          {items.map((item) => (
+            <div
+              key={item.label}
+              className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/10 px-4 py-8 backdrop-blur-sm transition-transform duration-300 hover:-translate-y-1"
+            >
+              <p className="font-serif text-5xl font-light tabular-nums text-accent sm:text-6xl">
+                {item.value === undefined ? "--" : String(item.value).padStart(2, "0")}
+              </p>
+              <p className="mt-3 text-xs font-semibold uppercase tracking-[0.25em] text-primary-foreground/75">
+                {item.label}
+              </p>
+            </div>
+          ))}
+        </div>
+        <p className="mt-10 text-lg text-primary-foreground/80">
+          12 de dezembro de 2026 · Salão Esplendor, Maputo
+        </p>
+      </div>
+    </section>
+  );
+}
+
+const PROGRAMA = [
+  {
+    hora: "19h30",
+    titulo: "Recepção & Welcome Drink",
+    descricao: "Boas-vindas aos convidados com espumante e música ambiente.",
+    icon: GlassWater,
+  },
+  {
+    hora: "20h30",
+    titulo: "Cerimónia de Celebração",
+    descricao: "Discursos da graduada, família e mentores, com brinde oficial.",
+    icon: GraduationCap,
+  },
+  {
+    hora: "21h30",
+    titulo: "Jantar de Gala",
+    descricao: "Jantar servido com menu especial preparado para a ocasião.",
+    icon: UtensilsCrossed,
+  },
+  {
+    hora: "23h00",
+    titulo: "Abertura da Pista",
+    descricao: "Primeira dança e abertura oficial da pista de dança.",
+    icon: Music,
+  },
+  {
+    hora: "00h00",
+    titulo: "Festa até de madrugada",
+    descricao: "DJ, pista aberta e muita celebração até altas horas.",
+    icon: PartyPopper,
+  },
+];
+
+function Programa() {
+  return (
+    <section id="programa" className="py-24 sm:py-32">
+      <div className="mx-auto max-w-4xl px-6">
+        <div className="text-center">
+          <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground">
+            Programa
+          </p>
+          <h2 className="font-serif text-4xl font-light sm:text-5xl">O programa da noite</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+            Cada momento foi pensado para tornar esta celebração inesquecível.
+          </p>
+        </div>
+        <ol className="mt-14 space-y-0">
+          {PROGRAMA.map((item, i) => (
+            <li key={item.hora} className="relative flex gap-6 pb-12 last:pb-0">
+              {i < PROGRAMA.length - 1 && (
+                <span className="absolute left-6 top-14 h-full w-px bg-border" aria-hidden />
+              )}
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary text-accent shadow-md">
+                <item.icon className="h-5 w-5" />
+              </div>
+              <div className="min-w-0 pt-1">
+                <p className="text-sm font-bold uppercase tracking-widest text-accent">
+                  {item.hora}
+                </p>
+                <p className="mt-1 font-serif text-2xl text-foreground">{item.titulo}</p>
+                <p className="mt-1 text-muted-foreground">{item.descricao}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
+
 function Index() {
   return (
     <main className="min-h-screen bg-background text-foreground">
+      <Navbar />
       {/* Hero */}
       <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
